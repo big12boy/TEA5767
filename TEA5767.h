@@ -14,15 +14,18 @@ big12boy - 2017
 class TEA5767{
 private:
 	int _addr;
-	short _lvl, _rdy;
+	short _lvl, _rdy, _sel, _staCnt;
 	byte _freqH, _freqL;
 	bool _muted, _search, _up, _stby, _snc, _stereo;
+	float _stations[20];
 	
 	void send();
 	void get();
 	
 public:
 	TEA5767();
+	short init(short minlvl);
+	
 	bool setFrequency(float frequency);
 	void setMuted(bool muted);
 	bool setSearch(bool up, int level);
@@ -33,6 +36,10 @@ public:
 	int getReady(); //0 Not Ready, 1 Ready, 2 Reached Limit
 	bool isStereo();
 	short getSignalLevel();	
+	
+	int findStations(short minlvl);
+	float nextStation();
+	short getStations();
 };
 
 #endif

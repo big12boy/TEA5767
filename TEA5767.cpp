@@ -11,7 +11,7 @@ big12boy - 2017
 
 TEA5767::TEA5767(){
 	_addr = 0x60;
-	_lvl = 2;
+	_lvl = 2; _sel = 0; _staCnt = 0;
 	_freqH = 0x00; _freqL = 0x00;
 	_muted = false; _search = false; _up = true; _stby = false; _snc = true;
 }
@@ -50,6 +50,13 @@ void TEA5767::get(){
 	_lvl = wIn >> 4;
 	
 	wIn = Wire.read();	
+}
+
+//Initialize and get available Stations
+short TEA5767::init(short minlvl){
+	Wire.begin();	
+	findStations(minlvl);	
+	return _staCnt;
 }
 
 //Set Functions
@@ -102,4 +109,47 @@ bool TEA5767::isStereo(){
 short TEA5767::getSignalLevel(){
 	get();	
 	return _lvl;
+}
+
+//Stations
+int TEA5767::findStations(short minlvl){
+	short llvl = 0;
+	float lsta = 0.00;
+	_staCnt = 0;
+	
+	for(float curfreq = 87.50; curfreq <= 108.00; curfreq+=0.1){
+		setFrequency(curfreq);		
+		delay(20);
+		get();
+		
+		if(_lvl >= minlvl && _stereo){
+			_stations[_staCnt] = curfreq;
+			if(lsta >= (curfreq - 0.30)){
+				if(llvl <= _lvl) _stations[_staCnt - 1] = curfreq;
+			}
+			else _staCnt++;	
+			
+			lsta = curfreq;
+			llvl = _lvl;
+		}	  
+	}
+	
+	if(_staCnt > 0)setFrequency(_stations[0]);
+	return _staCnt;
+}
+float TEA5767::nextStation(){
+	float sta;
+	if(_staCnt == 0) return 0.00; //No Stations Stored
+	else if(_staCnt == 1) sta = _stations[0];
+	else{
+		_sel++;
+		if(_sel >= _staCnt) _sel = 0;
+		sta = _stations[_sel];
+	}
+	
+	setFrequency(sta);
+	return sta;		
+}
+short TEA5767::getStations(){
+	return _staCnt;		
 }

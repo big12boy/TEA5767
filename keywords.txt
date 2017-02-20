@@ -12,6 +12,8 @@ TEA5767	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+init			KEYWORD2
+
 setFrequency	KEYWORD2
 setMuted		KEYWORD2
 setSearch		KEYWORD2
@@ -22,3 +24,7 @@ getFrequency	KEYWORD2
 getReady			KEYWORD2
 isStereo		KEYWORD2
 getSignalLevel	KEYWORD2
+
+findStations	KEYWORD2
+nextStation		KEYWORD2
+getStations		KEYWORD2
