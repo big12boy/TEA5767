@@ -110,6 +110,9 @@ short TEA5767::getSignalLevel(){
 	get();	
 	return _lvl;
 }
+bool TEA5767::isMuted(){	
+	return _muted;
+}
 
 //Stations
 int TEA5767::findStations(short minlvl){

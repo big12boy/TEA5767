@@ -21,9 +21,10 @@ setStandby		KEYWORD2
 setStereoNC		KEYWORD2
 
 getFrequency	KEYWORD2
-getReady			KEYWORD2
+getReady		KEYWORD2
 isStereo		KEYWORD2
 getSignalLevel	KEYWORD2
+isMuted			KEYWORD2
 
 findStations	KEYWORD2
 nextStation		KEYWORD2

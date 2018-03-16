@@ -36,6 +36,7 @@ public:
 	int getReady(); //0 Not Ready, 1 Ready, 2 Reached Limit
 	bool isStereo();
 	short getSignalLevel();	
+	bool isMuted();
 	
 	int findStations(short minlvl);
 	float nextStation();
