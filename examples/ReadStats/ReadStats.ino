@@ -9,7 +9,7 @@
 #include <TEA5767.h>
 TEA5767 radio = TEA5767();
 
-float frequency = 99.10 //Enter your own Frequency
+float frequency = 99.10; //Enter your own Frequency
 long baud = 250000; //Enter your own Baudrate
 
 long lmillis = 0;
