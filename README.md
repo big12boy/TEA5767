@@ -14,6 +14,7 @@ Arduino Library for the TEA5767 Radio Module
  - short: getSignalLevel()              //Get Signal Level (0-15)
  - int:   findStations(short minlvl)    //Search for available Stations
  - float: nextStation()                 //Go to next Station
+ - float: previousStation()             //Go to previous Station
  - short: getStations()                 //Get Number of Stations
   
 ## How to install:
