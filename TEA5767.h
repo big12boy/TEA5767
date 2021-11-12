@@ -40,6 +40,7 @@ public:
 	
 	int findStations(short minlvl);
 	float nextStation();
+	float previousStation();
 	short getStations();
 };
 

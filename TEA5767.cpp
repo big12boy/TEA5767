@@ -153,6 +153,21 @@ float TEA5767::nextStation(){
 	setFrequency(sta);
 	return sta;		
 }
+
+float TEA5767::previousStation() {
+	float sta;
+	if (_staCnt == 0) return 0.00; //No Stations Stored
+	else if (_staCnt == 1) sta = _stations[0];
+	else {
+		_sel--;
+		if (_sel < 0) _sel = _staCnt - 1;
+		sta = _stations[_sel];
+	}
+
+	setFrequency(sta);
+	return sta;
+
+}
 short TEA5767::getStations(){
 	return _staCnt;		
 }
