@@ -21,7 +21,7 @@ void TEA5767::send(){
 	Wire.beginTransmission(_addr); 
 	Wire.write((_muted << 7) | (_search << 6) | _freqH);
 	Wire.write(_freqL);
-	Wire.write((_up << 7) | (_lvl & 0x3 << 5) | 0x10);
+	Wire.write((_up << 7) | (_lvl & 0x3 << 5) |( _mono << 3)| 0x10);
 	Wire.write(0x10 | (_stby << 6));
 	Wire.write(0x00);
 	Wire.endTransmission();
