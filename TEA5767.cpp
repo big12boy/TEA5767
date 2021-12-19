@@ -13,7 +13,7 @@ TEA5767::TEA5767(){
 	_addr = 0x60;
 	_lvl = 2; _sel = 0; _staCnt = 0;
 	_freqH = 0x00; _freqL = 0x00;
-	_muted = false; _search = false; _up = true; _stby = false; _snc = true;
+	_muted = false; _search = false; _up = true; _stby = false; _snc = true; _mono = false;
 }
 
 //Send Data to the Module
@@ -71,6 +71,10 @@ bool TEA5767::setFrequency(float frequency){
 }
 void TEA5767::setMuted(bool muted){
 	_muted = muted;	
+	send();
+}
+void TEA5767::setMono(bool mono){
+	_mono = mono;	
 	send();
 }
 bool TEA5767::setSearch(bool up, int level){

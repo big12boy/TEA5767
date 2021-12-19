@@ -16,7 +16,7 @@ private:
 	int _addr;
 	short _lvl, _rdy, _sel, _staCnt;
 	byte _freqH, _freqL;
-	bool _muted, _search, _up, _stby, _snc, _stereo;
+	bool _muted, _search, _up, _stby, _snc, _stereo; _mono;
 	float _stations[20];
 	
 	void send();
@@ -28,6 +28,7 @@ public:
 	
 	bool setFrequency(float frequency);
 	void setMuted(bool muted);
+	void setMono(bool mono);
 	bool setSearch(bool up, int level);
 	void setStandby(bool stby);
 	void setStereoNC(bool snc);
