@@ -5,6 +5,8 @@ Arduino Library for the TEA5767 Radio Module
  - short: init(short minlvl)            //Initialize Bus and search for Stations
  - bool:  setFrequency(float frequency) //Set Radio Frequency
  - void:  setMuted(bool muted)          //Mute/Unmute Module
+ - void:  setMono(bool mono)            //Add a new function to set forced mono, very useful for space-constrained projects like clock radios.
+When setting forced mono the function 'isStereo()' function continues to return correctly if the station is stereo because this is a characteristic of the TEA5767
  - ~~bool:  setSearch(bool up, int level)~~	//Search for Stations <= Currently not working
  - void:  setStandby(bool stby)         //Enable/Disable Standby Mode
  - void:  setStereoNC(bool snc)         //Enable/Disable Stereo Noise Cancelling
@@ -27,3 +29,7 @@ Arduino Library for the TEA5767 Radio Module
  - GND to GND
  - VCC to 5V (3.3V won't work perfectly well and cause random errors, like frequency shift)
  - SDA and SCL depend on your board, check [Arduino-Wire](https://www.arduino.cc/en/Reference/Wire)
+
+
+Add a new feature to set forced mono, very useful for space-constrained projects like clock radios.
+When setting forced nome the function 'isStereo' continues to return correctly if the station is stereo.
